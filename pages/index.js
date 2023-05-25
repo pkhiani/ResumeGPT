@@ -29,8 +29,11 @@ export default function Home() {
         );
       }
 
+      console.log(jobDescription);
+
       setResult(data.result);
       setResume("");
+      setJobDescription("");
     } catch (error) {
       // Consider implementing your own error handling logic here
       console.error(error);
