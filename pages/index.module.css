@@ -42,10 +42,11 @@
   width: 320px;
 }
 .main input[type="text"] {
-  padding: 12px 16px;
+  padding: 8px 12px;
   border: 1px solid #10a37f;
   border-radius: 4px;
   margin-bottom: 24px;
+  margin-top: 24px;
   outline-color: #10a37f;
 }
 .main ::placeholder {
@@ -60,6 +61,14 @@
   border-radius: 4px;
   text-align: center;
   cursor: pointer;
+}
+.main textarea {
+  padding: 8px 12px;
+  border: 1px solid #10a37f;
+  border-radius: 4px;
+  margin-bottom: 24px;
+  margin-top: 24px;
+  outline-color: #10a37f;
 }
 .main .result {
   font-weight: bold;
