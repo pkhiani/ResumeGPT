@@ -1,14 +1,16 @@
 import Head from "next/head";
-import { useState } from "react";
 import styles from "./index.module.css";
+import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Home() {
-  const [resume, setResume] = useState("");
-  const [jobDescription, setJobDescription] = useState("");
-  const [result, setResult] = useState();
+  const [result, setResult] = useState("");
+  const [loading, setLoading] = useState(true);
 
-  async function onSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
+    setLoading(true);
+
     try {
       const response = await fetch("/api/generate", {
         method: "POST",
@@ -16,24 +18,19 @@ export default function Home() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          resume: resume,
-          jobDescription: jobDescription,
+          resume: event.target.resume.value,
+          description: event.target.description.value,
         }),
       });
 
       const data = await response.json();
       if (response.status !== 200) {
         throw (
-          data.error ||
-          new Error(`Request failed with status ${response.status}`)
+          data.error || new Error(`Request failed with status ${data.status}`)
         );
       }
-
-      console.log(jobDescription);
-
+      setLoading(false);
       setResult(data.result);
-      setResume("");
-      setJobDescription("");
     } catch (error) {
       // Consider implementing your own error handling logic here
       console.error(error);
@@ -45,42 +42,33 @@ export default function Home() {
     <div>
       <Head>
         <title>ResumeGPT</title>
-        <script
-          src="https://kit.fontawesome.com/e5790a7f1d.js"
-          crossorigin="anonymous"
-        ></script>
       </Head>
 
       <main className={styles.main}>
-        <i className="fa-light fa-file"></i>
-
         <h3>Tailor My Resume</h3>
-        <form onSubmit={onSubmit}>
-          <label for="resume_upload">
-            Upload your resume (.doc, .docx, .pdf)
-          </label>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="resume">Upload your resume (.doc, .docx, .pdf)</label>
           <input
-            type="file"
-            id="resume_upload"
-            accept=".doc,.docx,.pdf"
             name="resume"
+            type="file"
+            id="resume"
+            accept=".doc,.docx,.pdf"
             required
-            value={resume}
-            onChange={(e) => setResume(e.target.value)}
           />
-          {/* TODO: create the textarea wider */}
           <textarea
-            name="jobDescription"
-            id="description_upload"
+            name="description"
+            id="description"
             cols="40"
             rows="10"
+            placeholder="Paste your job description"
             required
-            value={jobDescription}
-            onChange={(e) => setJobDescription(e.target.value)}
           ></textarea>
+          {loading && (
+            <FontAwesomeIcon icon="fa-regular fa-circle-notch" spin />
+          )}
           <input type="submit" value="Generate" />
         </form>
-        <div className={styles.result}>{result}</div>
+        <p>{result}</p>
       </main>
     </div>
   );

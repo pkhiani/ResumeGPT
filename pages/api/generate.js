@@ -17,7 +17,7 @@ export default async function (req, res) {
   }
 
   const resume = req.body.resume || "";
-  const jobDescription = req.body.jobDescription || "";
+  const description = req.body.description || "";
 
   if (resume.trim().length === 0) {
     res.status(400).json({
@@ -28,7 +28,7 @@ export default async function (req, res) {
     return;
   }
 
-  if (jobDescription.trim().length === 0) {
+  if (description.trim().length === 0) {
     res.status(400).json({
       error: {
         message: "Please provide a valid job description",
@@ -40,7 +40,7 @@ export default async function (req, res) {
   try {
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: generatePrompt(resume, jobDescription),
+      prompt: generatePrompt(resume, description),
       temperature: 0.6,
     });
     res.status(200).json({ result: completion.data.choices[0].text });
@@ -60,6 +60,6 @@ export default async function (req, res) {
   }
 }
 
-function generatePrompt(resume, jobDescription) {
-  return `Tailor my resume: ${resume} to my job description: ${jobDescription}`;
+function generatePrompt(resume, description) {
+  return `Tailor my resume: ${resume} to my job description: ${description}`;
 }
