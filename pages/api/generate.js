@@ -38,18 +38,13 @@ export default async function (req, res) {
   }
 
   try {
-    // const response = await openai.createCompletion({
-    //   model: "text-davinci-003",
-    //   prompt: generatePrompt(resume, description),
-    //   temperature: 0.6,
-    // });
-
-    // const completion = response.data.choices[0].text.trim();
-
-    // console.log(completion);
-    // res.status(200).json({ result: completion });
-    console.log(resume);
-    res.status(200).json({ result: resume });
+    const response = await openai.createChatCompletion({
+      model: "gpt-3.5-turbo",
+      messages: [{ role: "user", content: generatePrompt(resume, description) }],
+      temperature: 0.5,
+    });
+  
+    return res.status(200).json({ result: response.data.choices[0].message.content });
   } catch (error) {
     // Consider adjusting the error handling logic for your use case
     if (error.response) {
@@ -67,5 +62,5 @@ export default async function (req, res) {
 }
 
 function generatePrompt(resume, description) {
-  return `Tailor my resume: ${resume} to my job description: ${description}`;
+  return `I want you to tailor my resume for a job description that I will provide. I want the output to be just the tailored work experience section. Here is my resume: ${resume}. \n Here is the job description: ${description}.`;
 }
