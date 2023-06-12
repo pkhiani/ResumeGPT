@@ -1,11 +1,10 @@
 import Head from "next/head";
 import styles from "./index.module.css";
 import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Home() {
   const [result, setResult] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -24,6 +23,7 @@ export default function Home() {
       });
 
       const data = await response.json();
+      console.log(data);
       if (response.status !== 200) {
         throw (
           data.error || new Error(`Request failed with status ${data.status}`)
@@ -63,11 +63,9 @@ export default function Home() {
             placeholder="Paste your job description"
             required
           ></textarea>
-          {loading && (
-            <FontAwesomeIcon icon="fa-regular fa-circle-notch" spin />
-          )}
           <input type="submit" value="Generate" />
         </form>
+        {loading && <p>Loading ...</p>}
         <p>{result}</p>
       </main>
     </div>

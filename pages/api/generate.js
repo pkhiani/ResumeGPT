@@ -38,12 +38,18 @@ export default async function (req, res) {
   }
 
   try {
-    const completion = await openai.createCompletion({
-      model: "text-davinci-003",
-      prompt: generatePrompt(resume, description),
-      temperature: 0.6,
-    });
-    res.status(200).json({ result: completion.data.choices[0].text });
+    // const response = await openai.createCompletion({
+    //   model: "text-davinci-003",
+    //   prompt: generatePrompt(resume, description),
+    //   temperature: 0.6,
+    // });
+
+    // const completion = response.data.choices[0].text.trim();
+
+    // console.log(completion);
+    // res.status(200).json({ result: completion });
+    console.log(resume);
+    res.status(200).json({ result: resume });
   } catch (error) {
     // Consider adjusting the error handling logic for your use case
     if (error.response) {
