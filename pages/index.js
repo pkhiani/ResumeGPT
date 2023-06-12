@@ -2,6 +2,8 @@ import Head from "next/head";
 import styles from "./index.module.css";
 import { useState } from "react";
 
+import './index.module.css'
+
 export default function Home() {
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
