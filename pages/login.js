@@ -40,7 +40,7 @@ export default function Login(){
     // Google handler function
 
     async function handleGoogleSignin(){
-        signIn('google', {callbackUrl: "http://localhost:3000"})
+        signIn('google', {callbackUrl: "https://resumegpt-rho.vercel.app"})
     }
 
     return (
