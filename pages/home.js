@@ -25,7 +25,7 @@ export default function HomePage() {
         </div>
 
         <div className="flex justify-center">
-          <button onClick={handleSignOut} className="mt-5 px-10 py-1 rounded-sm bg-indigo-500 bg-gray-50">
+          <button onClick={handleSignOut} className="mt-5 px-10 py-1 rounded-sm bg-gray-50">
             Sign Out
           </button>
         </div>
