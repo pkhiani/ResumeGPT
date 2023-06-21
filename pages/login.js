@@ -31,7 +31,7 @@ export default function Login(){
             redirect: false,
             email: values.email,
             password: values.password,
-            callbackUrl: "/"
+            callbackUrl: "/home"
         })
 
         if(status.ok) router.push(status.url)
@@ -40,7 +40,7 @@ export default function Login(){
     // Google handler function
 
     async function handleGoogleSignin(){
-        signIn('google', {callbackUrl: "http://localhost:3000"})
+        signIn('google', {callbackUrl: "http://localhost:3000/home"})
     }
 
     return (
