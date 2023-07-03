@@ -32,7 +32,9 @@ async function onSubmit(values){
     await fetch("https://resumegpt-rho.vercel.app/api/auth/signup", options)
     .then(res => res.json())
     .then((data) => {
-        if(data) router.push("https://resumegpt-rho.vercel.app")
+
+        if(data) router.push("http://localhost:3000/home")
+
     })
 }
 

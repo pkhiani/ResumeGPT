@@ -34,7 +34,17 @@ export default function Login() {
     if (status.ok) router.push(status.url);
   }
 
+
+    async function onSubmit (values) {
+        const status = await signIn('credentials', {
+            redirect: false,
+            email: values.email,
+            password: values.password,
+            callbackUrl: "/home"
+        })
+
   // Google handler function
+
 
   async function handleGoogleSignin() {
     signIn("google", { callbackUrl: "https://resumegpt-rho.vercel.app" });
@@ -52,6 +62,11 @@ export default function Login() {
             Login to access AI Resume Tailoring
           </p>
         </div>
+
+
+    async function handleGoogleSignin(){
+        signIn('google', {callbackUrl: "http://localhost:3000/home"})
+    }
 
         <form className="flex flex-col gap-5" onSubmit={formik.handleSubmit}>
           {/* Input fields */}
@@ -92,6 +107,7 @@ export default function Login() {
           ) : (
             <></>
           )}
+
 
           {/* Login Buttons */}
           <div className="input-button">
