@@ -53,23 +53,26 @@ export default function Home() {
     event.preventDefault();
     setLoading(true);
 
+    // New: Create a new FormData instance
+    const formData = new FormData();
+
+    // New: Append the file and description to the form data
+    formData.append("resume", event.target.resume.files[0]);
+    formData.append("description", event.target.description.value);
+
     try {
+      // New: Send formData in the body instead of a JSON string
       const response = await fetch("/api/generate", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          resume: event.target.resume.value,
-          description: event.target.description.value,
-        }),
+        body: formData,
       });
 
       const data = await response.json();
       console.log(data);
       if (response.status !== 200) {
         throw (
-          data.error || new Error(`Request failed with status ${data.status}`)
+          data.error ||
+          new Error(`Request failed with status ${response.status}`)
         );
       }
       setLoading(false);
