@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useSession, getSession, signOut } from "next-auth/react";
 import { saveAs } from "file-saver";
+import * as Diff from 'diff'
 
 export default function Home() {
   const [result, setResult] = useState("");
@@ -22,6 +23,22 @@ export default function Home() {
 
   function handleSignOut() {
     signOut();
+  }
+
+  function compareStrings(string1, string2) {
+    let results = Diff.diffChars(string1, string2);
+  
+    let output = "";
+    results.forEach((item) => {
+  
+      if (item.removed) {
+        output += `<span style="background-color:yellow">${item.value}</span>`;
+      } else if (!item.added) {
+        output += `${item.value}`;
+      }
+    });
+
+    return output;
   }
 
   function User({ session, handleSignOut }) {
@@ -129,6 +146,7 @@ export default function Home() {
         {!loading && result && (
           <button onClick={downloadFile}>Download File</button>
         )}
+        <p dangerouslySetInnerHTML={{ __html: compareStrings("baaa", "aaaa") }}></p>
       </main>
     </div>
   );
