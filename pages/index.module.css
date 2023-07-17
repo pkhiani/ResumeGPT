@@ -1,5 +1,5 @@
 @font-face {
-  font-family: "ColfaxAI";
+  font-family: "sans";
   src: url(https://cdn.openai.com/API/fonts/ColfaxAIRegular.woff2)
       format("woff2"),
     url(https://cdn.openai.com/API/fonts/ColfaxAIRegular.woff) format("woff");
@@ -7,7 +7,7 @@
   font-style: normal;
 }
 @font-face {
-  font-family: "ColfaxAI";
+  font-family: "sans";
   src: url(https://cdn.openai.com/API/fonts/ColfaxAIBold.woff2) format("woff2"),
     url(https://cdn.openai.com/API/fonts/ColfaxAIBold.woff) format("woff");
   font-weight: bold;
@@ -18,7 +18,7 @@
   font-size: 16px;
   line-height: 24px;
   color: #353740;
-  font-family: "ColfaxAI", Helvetica, sans-serif;
+  font-family: "sans", Helvetica, sans-serif;
 }
 .main {
   display: flex;
@@ -43,11 +43,11 @@
 }
 .main input[type="text"] {
   padding: 8px 12px;
-  border: 1px solid #10a37f;
+  border: 1px solid #22C55E;
   border-radius: 4px;
   margin-bottom: 24px;
   margin-top: 24px;
-  outline-color: #10a37f;
+  outline-color: #22C55E;
 }
 .main ::placeholder {
   color: #8e8ea0;
@@ -56,19 +56,24 @@
 .main input[type="submit"] {
   padding: 12px 0;
   color: #fff;
-  background-color: #10a37f;
+  background-color: #22C55E;
   border: none;
   border-radius: 4px;
   text-align: center;
   cursor: pointer;
 }
+
+.main input[type="submit"]:hover {
+  background-color: #166534;
+}
+
 .main textarea {
   padding: 8px 12px;
-  border: 1px solid #10a37f;
+  border: 1px solid #22C55E;
   border-radius: 4px;
   margin-bottom: 24px;
   margin-top: 24px;
-  outline-color: #10a37f;
+  outline-color: #22C55E;
 }
 .main .result {
   font-weight: bold;
