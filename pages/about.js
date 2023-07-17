@@ -1,8 +1,17 @@
 import Head from "next/head";
-import Hero from "../components/Hero";
+import About from "../components/About";
 
-export default function About() {
+export default function AboutUs() {
     return (
-        <div></div>
+
+        <div>
+            <Head>
+            <title>About</title>
+            </Head>
+        
+            <About heading="About" message='Tailor your Resume using AI' /> 
+
+        </div>
+
     )
 }
