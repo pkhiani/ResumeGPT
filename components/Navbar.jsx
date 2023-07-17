@@ -27,23 +27,23 @@ const Navbar = () => {
     //   }, []);
 
     return (
-        <div style ={{backgroundColor: `${color}`}} className='fixed left-0 top-0 w-full z-10 ease-in duration-300'>
-            <div className='max-w-[1240px] m-auto flex justify-between items-center p-4 hover:no-underline'>
+        <div style ={{backgroundColor: `${color}`}} className='fixed left-2.5 top-0 w-full z-10 ease-in duration-300'>
+            <div className='m-auto flex justify-between items-center p-4 hover:no-underline'>
                 <Link className='hover:no-underline' href='/'>
                     <h1 style ={{color: `${textColor}`}} className='font-bold text-4xl'>ResumeGPT</h1>
                 </Link>
                 <ul style ={{color: `${textColor}`}} className='hidden sm:flex hover:no-underline'>
                     <li className='p-4'>
-                        <Link className='hover:no-underline text-black' href='/'>Home</Link>
+                        <Link className='hover:no-underline text-black' href='/about'>About</Link>
                     </li>
                     <li className='p-4'>
-                        <Link className='hover:no-underline text-black' href='/'>About Us</Link>
+                        <Link className='hover:no-underline text-black' href='/contact'>Contact</Link>
                     </li>
                     <li className='p-4'>
-                        <Link className='hover:no-underline text-black' href='/'>How it Works</Link>
+                        <Link className='hover:no-underline text-black' href='/login'>Login</Link>
                     </li>
                     <li className='p-4'>
-                        <Link className='hover:no-underline text-black' href='/'>Contact</Link>
+                        <Link className='text-white bg-green-500 hover:bg-green-700 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none dark:focus:ring-green-800 hover:no-underline' href='/register'>Register</Link>
                     </li>
                 </ul>
 
@@ -62,16 +62,16 @@ const Navbar = () => {
                 }>
                     <ul>
                         <li onClick={handleNav} className='p-4 text-4xl hover:text-gray-500'>
-                            <Link className='hover:no-underline' href='/'>Home</Link>
+                            <Link className='hover:no-underline' href='/about'>About</Link>
                         </li>
                         <li onClick={handleNav} className='p-4 text-4xl hover:text-gray-500'>
-                            <Link className='hover:no-underline' href='/'>About Us</Link>
+                            <Link className='hover:no-underline' href='/contact'>Contact</Link>
                         </li>
                         <li onClick={handleNav} className='p-4 text-4xl hover:text-gray-500'>
-                            <Link className='hover:no-underline' href='/'>How it Works</Link>
+                            <Link className='hover:no-underline' href='/login'>Login</Link>
                         </li>
                         <li onClick={handleNav} className='p-4 text-4xl hover:text-gray-500'>
-                            <Link className='hover:no-underline' href='/'>Contact</Link>
+                            <Link className='hover:no-underline' href='/register'>Register</Link>
                         </li>
                     </ul>
                 </div>
