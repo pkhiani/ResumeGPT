@@ -36,7 +36,7 @@ export default function Home() {
         <div className="flex justify-center">
           <button
             onClick={handleSignOut}
-            className="mt-2 px-10 py-10 rounded-sm bg-gray-50"
+            className="mt-2 px-10 py-10 rounded-sm bg-gray-50 "
           >
             Sign Out
           </button>
@@ -94,7 +94,7 @@ export default function Home() {
         <h5 className="absolute left-1 mt-24">{session.user.email}</h5>
         <button
           onClick={handleSignOut}
-          className="absolute left-1 mt-32 px-10 py-1 rounded-sm bg-green-300"
+          className="absolute left-1 mt-32 px-10 py-1 rounded-sm bg-green-500"
         >
           Sign Out
         </button>
