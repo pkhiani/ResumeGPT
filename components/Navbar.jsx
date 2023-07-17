@@ -13,18 +13,18 @@ const Navbar = () => {
         setNav(!nav)
     };
 
-    useEffect(() => {
-        const changeColor = () => {
-          if (window.scrollY >= 10) {
-            setColor('#ffffff');
-            setTextColor('#000000');
-          } else {
-            setColor('transparent');
-            setTextColor('#000000');
-          }
-        };
-        window.addEventListener('scroll', changeColor);
-      }, []);
+    // useEffect(() => {
+    //     const changeColor = () => {
+    //       if (window.scrollY >= 10) {
+    //         setColor('#ffffff');
+    //         setTextColor('#000000');
+    //       } else {
+    //         setColor('transparent');
+    //         setTextColor('#000000');
+    //       }
+    //     };
+    //     window.addEventListener('scroll', changeColor);
+    //   }, []);
 
     return (
         <div style ={{backgroundColor: `${color}`}} className='fixed left-0 top-0 w-full z-10 ease-in duration-300'>
