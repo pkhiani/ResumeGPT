@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useSession, getSession, signOut } from "next-auth/react";
 import { saveAs } from "file-saver";
+import { jsPDF } from "jspdf";
 
 export default function Home() {
   const [result, setResult] = useState("");
@@ -11,13 +12,18 @@ export default function Home() {
 
   const { data: session } = useSession();
 
-  const downloadFile = () => {
-    const fileContent = result;
+  // const downloadFile = () => {
+  //   const fileContent = result;
+  //   const file = new Blob([fileContent], {
+  //     type: "text/plain;charset=utf-8",
+  //   });
+  //   saveAs(file, "example.txt");
+  // };
 
-    const file = new Blob([fileContent], {
-      type: "text/plain;charset=utf-8",
-    });
-    saveAs(file, "example.txt");
+  const downloadFile = () => {
+    const doc = new jsPDF();
+    doc.text(result, 10, 10); // adds the text to the PDF document
+    doc.save("download.pdf"); // triggers a download of the PDF document
   };
 
   function handleSignOut() {
@@ -53,22 +59,17 @@ export default function Home() {
     event.preventDefault();
     setLoading(true);
 
-    // New: Create a new FormData instance
     const formData = new FormData();
-
-    // New: Append the file and description to the form data
     formData.append("resume", event.target.resume.files[0]);
     formData.append("description", event.target.description.value);
 
     try {
-      // New: Send formData in the body instead of a JSON string
       const response = await fetch("/api/generate", {
         method: "POST",
         body: formData,
       });
 
       const data = await response.json();
-      console.log(data);
       if (response.status !== 200) {
         throw (
           data.error ||
@@ -88,7 +89,6 @@ export default function Home() {
     <div>
       <div className="details">
         <h5>{session.user.name}</h5>
-        
       </div>
       <div className="flex justify-center">
         <h5 className="absolute left-1 mt-24">{session.user.email}</h5>

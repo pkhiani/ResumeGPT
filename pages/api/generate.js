@@ -15,12 +15,16 @@ export const config = {
   },
 };
 
-const apiRoute = async (req, res) => {
-  upload.single("resume")(req, res, async (err) => {
+export default async function handler(req, res) {
+  const uploadMiddleware = upload.single("resume");
+
+  uploadMiddleware(req, res, async (err) => {
     if (err instanceof multer.MulterError) {
       return res.status(500).json(err);
     } else if (err) {
       return res.status(500).json(err);
+    } else if (!req.file) {
+      return res.status(400).json({ error: { message: "File upload failed" } });
     }
 
     if (!configuration.apiKey) {
@@ -33,8 +37,7 @@ const apiRoute = async (req, res) => {
       return;
     }
 
-    const description = "some generic description";
-    // const description = req.body.description || "";
+    const description = req.body.description || "";
     const resumeFile = req.file;
 
     if (!resumeFile) {
@@ -55,7 +58,18 @@ const apiRoute = async (req, res) => {
       return;
     }
 
-    const parsedResume = await parsePdf(resumeFile.path);
+    let parsedResume;
+
+    try {
+      parsedResume = await parsePdf(resumeFile.path);
+    } catch (error) {
+      console.error(`Error parsing PDF: ${error.message}`);
+      return res.status(500).json({
+        error: {
+          message: "An error occurred during parsing the PDF.",
+        },
+      });
+    }
 
     try {
       const response = await openai.createChatCompletion({
@@ -87,10 +101,8 @@ const apiRoute = async (req, res) => {
       }
     }
   });
-};
-
-function generatePrompt(resume, description) {
-  return `I want you to tailor my resume for a job description that I will provide. I want the output to be just the tailored work experience section. Here is my resume: ${resume}. \n Here is the job description: ${description}.`;
 }
 
-export default apiRoute;
+function generatePrompt(resume, description) {
+  return `I want you to tailor my resume for a job description that I will provide. I want the output to be a file in the exact same format as the provided resume. Here is my resume: ${resume}. \n Here is the job description: ${description}.`;
+}
