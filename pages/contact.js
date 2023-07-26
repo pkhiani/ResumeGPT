@@ -1,19 +1,18 @@
 import Head from "next/head";
-import About from "../components/About";
+import ContactUs from "../components/Contact";
 import Footer from "../components/Footer"
 
-export default function AboutUs() {
+
+export default function Contact() {
     return (
 
         <div>
             <Head>
-            <title>About</title>
+            <title>Contact</title>
             </Head>
         
-            <About heading="About" message='Tailor your Resume using AI' /> 
-
+            <ContactUs></ContactUs>
             <Footer></Footer>
-
         </div>
 
     )
