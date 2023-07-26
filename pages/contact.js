@@ -1,5 +1,7 @@
 import Head from "next/head";
 import ContactUs from "../components/Contact";
+import Footer from "../components/Footer"
+
 
 export default function Contact() {
     return (
@@ -10,6 +12,7 @@ export default function Contact() {
             </Head>
         
             <ContactUs></ContactUs>
+            <Footer></Footer>
         </div>
 
     )
