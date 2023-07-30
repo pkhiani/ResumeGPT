@@ -10,20 +10,12 @@ const Demo = () => {
     };
 
     return (
-        <div className="lg:px-40 dark:bg-green-600 md:h-96">
-            <div className='absolute top-0 left-0 right-0 bottom-0 bg-green/70 z-[2]'/>
-            <div className='p-5 text-center text-black mt-[-10rem]'>
-                <h2 className='text-5xl font-bold'>How does it work?</h2>
-                <p className='py-5 text-xl'>We don't steal your data</p>
-                {/* <button onClick={handleClick} className='text-white bg-green-500 hover:bg-green-700 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none dark:focus:ring-green-800 hover:no-underline'>Get Started</button> */}
-
+        <div className="flex dark:bg-green-600 mt-[-10rem] h-96 items-center justify-center">
+            <div className='text-black text-center items-center justify-center'> 
+                <h2 className='text-5xl font-bold'>How it Works</h2>
+                <p className='py-5 text-xl'>Our AI-driven platform uses sophisticated algorithms and machine learning to analyze job descriptions and compare them with your existing resume. Our system identifies the keywords, skills, and experiences most relevant to the job you're targeting. We then suggest personalized improvements and optimizations to make your resume a perfect match for the position.</p>
             </div>
         </div>
-
-
-
-        
-
     )
 }
 

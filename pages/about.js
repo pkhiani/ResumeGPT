@@ -10,7 +10,7 @@ export default function AboutUs() {
             <title>About</title>
             </Head>
         
-            <About heading="About" message='Tailor your Resume using AI' /> 
+            <About/> 
 
             <Footer></Footer>
 

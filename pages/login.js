@@ -52,8 +52,8 @@ export default function Login(){
             </Head>
         <section className='w-3/4 mx-auto flex flex-col gap-10'>
             <div className="title">
-                <h1 className='text-gray-800 text-4xl font-bold py-4'>ResumeGPT</h1>
-                <p className='w-3/4 mx-auto text-gray-400'>Login to access AI Resume Tailoring</p>
+                {/* <h1 className='text-gray-800 text-4xl font-bold py-4'>ResumeGPT</h1> */}
+                <p className='w-3/4 mx-auto text-black font-bold'>Login to access AI Resume Tailoring</p>
             </div>
 
             <form className="flex flex-col gap-5" onSubmit={formik.handleSubmit}>
