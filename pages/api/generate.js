@@ -33,8 +33,8 @@ const apiRoute = async (req, res) => {
       return;
     }
 
-    const description = "some generic description";
-    // const description = req.body.description || "";
+    // const description = "some generic description";
+    const description = req.body.description || "";
     const resumeFile = req.file;
 
     if (!resumeFile) {
@@ -66,7 +66,7 @@ const apiRoute = async (req, res) => {
             content: generatePrompt(parsedResume, description),
           },
         ],
-        temperature: 0.5,
+        temperature: 0.3,
       });
 
       return res
@@ -96,7 +96,7 @@ function generatePrompt(resume, description) {
   
   Here is the job description the user wants to apply for: ${description}.
   
-  As the final output from you, provide only the tailored 'Work Experience' section of the resume, and give comparisons of the original to the tailored one.`;
+  As the final output from you, highlight the differences between the Original Work Experience and the Tailored Work Experience.`;
 }
 
 export default apiRoute;
