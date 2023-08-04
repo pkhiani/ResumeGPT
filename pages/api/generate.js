@@ -33,8 +33,8 @@ const apiRoute = async (req, res) => {
       return;
     }
 
-    const description = "some generic description";
-    // const description = req.body.description || "";
+    // const description = "some generic description";
+    const description = req.body.description || "";
     const resumeFile = req.file;
 
     if (!resumeFile) {
@@ -66,7 +66,7 @@ const apiRoute = async (req, res) => {
             content: generatePrompt(parsedResume, description),
           },
         ],
-        temperature: 0.5,
+        temperature: 0.3,
       });
 
       return res
@@ -90,7 +90,13 @@ const apiRoute = async (req, res) => {
 };
 
 function generatePrompt(resume, description) {
-  return `I want you to tailor my resume for a job description that I will provide. I want the output to be just the tailored work experience section. Here is my resume: ${resume}. \n Here is the job description: ${description}.`;
+  return `You work in the following way: A user can upload a pdf file of their resume, and paste a job description of a job they want to apply for. 
+  You will then incorporate keywords from the job description the user provided into the user's resume, and also reword it so it is more likely to be picked up by resume screening systems.
+  Here is the user's resume: ${resume}
+  
+  Here is the job description the user wants to apply for: ${description}.
+  
+  As the final output from you, highlight the differences between the Original Work Experience and the Tailored Work Experience.`;
 }
 
 export default apiRoute;
