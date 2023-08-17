@@ -94,7 +94,7 @@ export default function Home() {
         <h5 className="absolute left-1 mt-24">{session.user.email}</h5>
         <button
           onClick={handleSignOut}
-          className="absolute left-1 mt-32 px-10 py-1 rounded-sm bg-green-500"
+          className="absolute left-1 mt-32 px-10 py-1 font-medium rounded-lg text-sm bg-green-500 text-white dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none dark:focus:ring-green-800 hover:no-underline"
         >
           Sign Out
         </button>

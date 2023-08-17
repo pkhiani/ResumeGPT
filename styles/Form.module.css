@@ -1,6 +1,7 @@
 
 .input_group{
     @apply flex border rounded-xl;
+    @apply font-medium;
     position: relative;
 }
 
@@ -10,8 +11,8 @@
 }
 
 .button{
-    @apply w-full bg-gradient-to-r from-green-500 to-green-300 rounded-md;
-    @apply py-3 text-gray-50 text-lg
+    @apply text-white bg-green-500 hover:bg-green-700 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none dark:focus:ring-green-800 hover:no-underline;
+    @apply w-full border py-3 px-5 justify-center;
 }
 
 .button:hover{
@@ -20,7 +21,8 @@
 }
 
 .button_custom{
-    @apply w-full border py-3 flex justify-center gap-2 hover:bg-gray-200;
+    @apply w-full border py-3 px-5 flex justify-center gap-2 hover:bg-gray-200 hover:no-underline;
+    @apply font-medium rounded-lg focus:ring-4 text-sm;
 
 }
 

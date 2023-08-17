@@ -48,7 +48,7 @@ async function onSubmit(values){
         <section className='w-3/4 mx-auto flex flex-col gap-10'>
             <div className="title">
                 {/* <h1 className='text-gray-800 text-4xl font-bold py-4'>Register</h1> */}
-                <p className='w-3/4 mx-auto text-black font-bold'>Resgiter to access AI Resume Tailoring</p>
+                <p className='w-3/4 mx-auto text-black font-medium'>Resgiter to access AI Resume Tailoring</p>
             </div>
 
             <form className="flex flex-col gap-5" onSubmit={formik.handleSubmit}>
@@ -101,7 +101,7 @@ async function onSubmit(values){
                
             </form>
         {/* bottom */}
-        <p className="text-center text-gray-400">
+        <p className="text-center text-gray-400 font-medium">
             Have an account? <Link legacyBehavior href={'/login'}><a className='text-green-500'>Sign In</a></Link>
         </p>
         </section>

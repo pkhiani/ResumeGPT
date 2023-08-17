@@ -53,7 +53,7 @@ export default function Login(){
         <section className='w-3/4 mx-auto flex flex-col gap-10'>
             <div className="title">
                 {/* <h1 className='text-gray-800 text-4xl font-bold py-4'>ResumeGPT</h1> */}
-                <p className='w-3/4 mx-auto text-black font-bold'>Login to access AI Resume Tailoring</p>
+                <p className='w-3/4 mx-auto text-black font-medium'>Login to access AI Resume Tailoring</p>
             </div>
 
             <form className="flex flex-col gap-5" onSubmit={formik.handleSubmit}>
@@ -103,7 +103,7 @@ export default function Login(){
                 </div> */}
             </form>
         {/* bottom */}
-        <p className="text-center text-gray-400">
+        <p className="text-center text-gray-400 font-medium">
             Don't have an account yet? <Link legacyBehavior href={'/register'}><a className='text-green-500'>Sign Up</a></Link>
         </p>
         </section>
