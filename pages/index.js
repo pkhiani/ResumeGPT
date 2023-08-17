@@ -16,7 +16,7 @@ export default function Home() {
         <title>ResumeGPT</title>
         </Head>
     
-        <Hero heading="Welcome to ResumeGPT - Your Personalized Resume Tailoring Solution!" message="Our cutting-edge web application harnesses the power of artificial intelligence (AI) to tailor your resume specifically to the job you're applying for, ensuring that you make a lasting impression on recruiters and employers." /> 
+        <Hero heading="Unlock Your Dream Job with AI-Powered Resume Tailoring, and Craft Resumes That Get Noticed and Land Interviews!" message="Our cutting-edge web application harnesses the power of artificial intelligence (AI) to tailor your resume specifically to the job you're applying for, ensuring that you make a lasting impression on recruiters and employers." /> 
 
         <Demo></Demo>
 
